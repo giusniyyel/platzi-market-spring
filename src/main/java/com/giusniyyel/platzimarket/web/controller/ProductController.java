@@ -3,8 +3,7 @@ package com.giusniyyel.platzimarket.web.controller;
 import com.giusniyyel.platzimarket.domain.ProductDTO;
 import com.giusniyyel.platzimarket.domain.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,23 +18,28 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @GetMapping
     public List<ProductDTO> getAll() {
         return productService.getAll();
     }
 
-    public Optional<ProductDTO> getProduct(int productId) {
+    @GetMapping("/{id}")
+    public Optional<ProductDTO> getProduct(@PathVariable("id") int productId) {
         return productService.getProduct(productId);
     }
 
-    public Optional<List<ProductDTO>> getByCategoryId(int categoryId) {
+    @GetMapping("/category/{id}")
+    public Optional<List<ProductDTO>> getByCategoryId(@PathVariable("id") int categoryId) {
         return productService.getByCategory(categoryId);
     }
 
-    public ProductDTO save(ProductDTO productDTO) {
+    @PostMapping
+    public ProductDTO save(@RequestBody ProductDTO productDTO) {
         return productService.save(productDTO);
     }
 
-    public boolean delete(int productId) {
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int productId) {
         return productService.delete(productId);
     }
 }
