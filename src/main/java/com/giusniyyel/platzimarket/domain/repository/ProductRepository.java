@@ -1,20 +1,20 @@
 package com.giusniyyel.platzimarket.domain.repository;
 
-import com.giusniyyel.platzimarket.domain.ProductDomain;
+import com.giusniyyel.platzimarket.domain.ProductDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository {
-    List<ProductDomain> getAll();
+    List<ProductDTO> getAll();
 
-    Optional<List<ProductDomain>> getByCategory(int categoryId);
+    Optional<List<ProductDTO>> getByCategory(int categoryId);
 
-    Optional<List<ProductDomain>> getScarseProducts(int quantity);
+    Optional<List<ProductDTO>> getScarseProducts(int quantity);
 
-    Optional<ProductDomain> getProduct(int productId);
+    Optional<ProductDTO> getProduct(int productId);
 
-    ProductDomain save(ProductDomain product);
+    ProductDTO save(ProductDTO product);
 
     void delete(int productId);
 }
