@@ -17,7 +17,6 @@ public class ProductRepository implements ProductRepositoryDTO {
     private final ProductCrudRepository productCrudRepository;
     private final ProductMapper mapper;
 
-    @Autowired
     public ProductRepository(ProductCrudRepository productCrudRepository, ProductMapper mapper) {
         this.productCrudRepository = productCrudRepository;
         this.mapper = mapper;
@@ -38,12 +37,12 @@ public class ProductRepository implements ProductRepositoryDTO {
     @Override
     public Optional<List<ProductDTO>> getScarseProducts(int quantity) {
         Optional<List<Product>> products = productCrudRepository.findByStockLessThanAndStatus(quantity, true);
-        return products.map(prods -> mapper.toProductsDTO(prods));
+        return products.map(mapper::toProductsDTO);
     }
 
     @Override
     public Optional<ProductDTO> getProduct(int idProduct) {
-        return productCrudRepository.findById(idProduct).map(prod -> mapper.toProductDTO(prod));
+        return productCrudRepository.findById(idProduct).map(mapper::toProductDTO);
     }
 
     @Override

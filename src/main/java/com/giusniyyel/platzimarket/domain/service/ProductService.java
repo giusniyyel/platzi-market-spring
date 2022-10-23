@@ -13,7 +13,6 @@ import java.util.Optional;
 public class ProductService {
     private final ProductRepositoryDTO productRepositoryDTO;
 
-    @Autowired
     public ProductService(ProductRepositoryDTO productRepositoryDTO) {
         this.productRepositoryDTO = productRepositoryDTO;
     }
