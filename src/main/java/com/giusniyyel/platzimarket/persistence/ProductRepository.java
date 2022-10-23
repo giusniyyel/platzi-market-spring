@@ -5,6 +5,7 @@ import com.giusniyyel.platzimarket.domain.repository.ProductRepositoryDTO;
 import com.giusniyyel.platzimarket.persistence.crud.ProductCrudRepository;
 import com.giusniyyel.platzimarket.persistence.entity.Product;
 import com.giusniyyel.platzimarket.persistence.mapper.ProductMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,8 +13,15 @@ import java.util.Optional;
 
 @Repository
 public class ProductRepository implements ProductRepositoryDTO {
-    private ProductCrudRepository productCrudRepository;
-    private ProductMapper mapper;
+
+    private final ProductCrudRepository productCrudRepository;
+    private final ProductMapper mapper;
+
+    @Autowired
+    public ProductRepository(ProductCrudRepository productCrudRepository, ProductMapper mapper) {
+        this.productCrudRepository = productCrudRepository;
+        this.mapper = mapper;
+    }
 
     @Override
     public List<ProductDTO> getAll() {
