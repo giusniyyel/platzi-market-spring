@@ -1,6 +1,6 @@
 package com.giusniyyel.platzimarket.domain;
 
-public class CategoryDomain {
+public class CategoryDTO {
     private int categoryId;
     private String category;
     private boolean active;
