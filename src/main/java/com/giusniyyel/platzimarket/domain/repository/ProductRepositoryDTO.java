@@ -5,7 +5,7 @@ import com.giusniyyel.platzimarket.domain.ProductDTO;
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductRepository {
+public interface ProductRepositoryDTO {
     List<ProductDTO> getAll();
 
     Optional<List<ProductDTO>> getByCategory(int categoryId);
