@@ -27,8 +27,8 @@ public class SaleRepository implements PurchaseRepositoryDTO {
     }
 
     @Override
-    public Optional<List<PurchaseDTO>> getByClient(String cliendId) {
-        return saleCrudRepository.findByIdClient(cliendId)
+    public Optional<List<PurchaseDTO>> getByClient(String clientId) {
+        return saleCrudRepository.findByIdClient(clientId)
                 .map(mapper::toPurchases);
     }
 

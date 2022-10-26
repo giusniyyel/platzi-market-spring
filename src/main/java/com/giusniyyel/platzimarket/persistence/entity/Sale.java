@@ -13,7 +13,7 @@ public class Sale {
     @Column(name = "id_compra")
     private Integer idSale;
 
-    @Column(name = "id_client")
+    @Column(name = "id_cliente")
     private String idClient;
 
     @Column(name = "fecha")
@@ -29,7 +29,7 @@ public class Sale {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Client client;
 
     @OneToMany(mappedBy = "sale", cascade = {CascadeType.ALL})

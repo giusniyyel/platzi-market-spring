@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface PurchaseRepositoryDTO {
     List<PurchaseDTO> getAll();
 
-    Optional<List<PurchaseDTO>> getByClient(String cliendId);
+    Optional<List<PurchaseDTO>> getByClient(String clientId);
 
     PurchaseDTO save(PurchaseDTO purchase);
 }

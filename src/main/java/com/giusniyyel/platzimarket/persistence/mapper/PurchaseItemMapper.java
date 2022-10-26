@@ -12,7 +12,6 @@ public interface PurchaseItemMapper {
 
     @Mappings({
             @Mapping(source = "id.idProduct", target = "productId"),
-            @Mapping(source = "quantity", target = "quantity"),
             @Mapping(source = "status", target = "active")
     })
     PurchaseItemDTO toPurchaseItem(SaleProduct product);
