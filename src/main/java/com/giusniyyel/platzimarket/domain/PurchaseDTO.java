@@ -9,7 +9,8 @@ public class PurchaseDTO {
     private LocalDateTime date;
     private String paymentMethod;
     private String comment;
-    private List<PurchaseItemDTO> item;
+    private String status;
+    private List<PurchaseItemDTO> items;
 
     public int getPurchaseId() {
         return purchaseId;
@@ -51,11 +52,19 @@ public class PurchaseDTO {
         this.comment = comment;
     }
 
-    public List<PurchaseItemDTO> getItem() {
-        return item;
+    public String getStatus() {
+        return status;
     }
 
-    public void setItem(List<PurchaseItemDTO> item) {
-        this.item = item;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<PurchaseItemDTO> getItems() {
+        return items;
+    }
+
+    public void setItem(List<PurchaseItemDTO> items) {
+        this.items = items;
     }
 }
