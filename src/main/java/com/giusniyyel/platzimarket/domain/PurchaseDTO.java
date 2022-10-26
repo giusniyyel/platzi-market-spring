@@ -64,7 +64,7 @@ public class PurchaseDTO {
         return items;
     }
 
-    public void setItem(List<PurchaseItemDTO> items) {
+    public void setItems(List<PurchaseItemDTO> items) {
         this.items = items;
     }
 }
