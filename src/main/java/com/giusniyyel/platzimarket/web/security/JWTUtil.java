@@ -1,5 +1,6 @@
 package com.giusniyyel.platzimarket.web.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -12,11 +13,26 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
-    public String generateToken(UserDetails userDetails) {
-        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final SecretKey KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-        return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-                .signWith(key).compact();
+    public String generateToken(UserDetails userDetails) {
+        return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)).signWith(KEY).compact();
+    }
+
+    public boolean validateToken(String token, UserDetails userDetails) {
+        return userDetails.getUsername().equals(extractUsername(token)) && !isTokenExpired(token);
+    }
+
+    public String extractUsername(String token) {
+        return getClaims(token).getSubject();
+    }
+
+    public boolean isTokenExpired(String token) {
+        return getClaims(token).getExpiration().before(new Date());
+    }
+
+    // Get the tokens values
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder().setSigningKey(KEY).build().parseClaimsJws(token).getBody(); // Have to change ClaimsJwt to Jws to admit signature
     }
 }
