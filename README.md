@@ -26,7 +26,7 @@ Through various hands-on exercises, you'll delve into essential concepts like:
 
 1. Clone the repository: `git clone https://github.com/giusniyyel/platzi-market-spring.git`.
 2. Ensure you have Java 11+ and Gradle installed.
-3. Navigate to the project directory and run: `gradlew build.
+3. Navigate to the project directory and run: `gradlew build`.
 4. Configure database connection details in `application.properties`.
 5. Run the application: `gradlew bootRun`.
 6. Access the API documentation at `http://localhost:8080/swagger-ui/index.html`
